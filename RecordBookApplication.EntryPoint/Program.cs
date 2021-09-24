@@ -40,7 +40,47 @@ namespace RecordBookApplication.EntryPoint
              *  3. Quit:
              *          
              * **/
-            
+            bool huvudmeny = true;
+
+            while (huvudmeny)
+            {
+                Console.WriteLine("Gör ett val 1 - 5");
+                int val;
+                Int32.TryParse(Console.ReadLine(), out val);
+                if (val == 1 | val == 2 || val == 3 || val == 4 || val == 5)
+                {
+                    switch (val)
+                    {
+                        case 1: //skriv ut alla studenter med namn och statistik
+
+                            break;
+
+                        case 2: //skapa student - namn och betyg
+
+                            break;
+
+                        case 3: // sök på student - skriv ut med betyg
+
+                            break;
+
+                        case 4: //nåt annat?
+
+                            break;
+
+                        case 5:
+                            Console.WriteLine("Avslutar");
+                            Console.ReadKey();
+                            huvudmeny = false;
+                            break;
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Gör ett val 1 - 5");
+                    Int32.TryParse(Console.ReadLine(), out val);
+                }
+            }//
 
 
 
