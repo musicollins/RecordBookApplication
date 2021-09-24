@@ -11,12 +11,16 @@ namespace RecordBookApplication.EntryPoint
 
             //Todo Implement CalcAverge feature
             List<double> myList = new List<double>() { 23.4, 34.5, 65.6 };
-            Console.WriteLine(CalcAverage(myList)); 
+            Console.WriteLine(CalcAverage(myList));
             //Hejsan Rafael
-            
+
             //Todo Implement GetHighest & GetLowest feature
 
+            Console.WriteLine("hej");
         }
+
+        
+
         private static double CalcAverage(List<double> list)
         {
             var total = 0.0;
