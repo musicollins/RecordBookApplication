@@ -13,7 +13,7 @@ namespace RecordBookApplication.EntryPoint
             Book book = new Book();
             book.AddRecord(new RecordBook() { Student = new Student() { Id = 1, Name = "Ralph", Grades = grades } });
 
-            
+
 
 
             //Todo: Create 3 metoder for Statistics GetHighest, GetLowest & CalcAverage
@@ -25,10 +25,8 @@ namespace RecordBookApplication.EntryPoint
             //Create Helper class for Sorting & Searching
         }
 
-        private static void BubbleSort(List<double> records)
-        {
-            
-        }
+
+    
 
         private static void InsertionSort(List<double> records)
         {
