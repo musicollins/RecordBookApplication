@@ -40,7 +40,61 @@ namespace RecordBookApplication.EntryPoint
              *  3. Quit:
              *          
              * **/
-            
+            bool huvudmeny = true;
+
+            while (huvudmeny)
+            {
+                Console.WriteLine("Gör ett val 1 - 5");
+                int val;
+                Int32.TryParse(Console.ReadLine(), out val);
+                if (val == 1 | val == 2 || val == 3 || val == 4 || val == 5)
+                {
+                    switch (val)
+                    {
+                        case 1: //skriv ut alla studenter med namn och statistik
+                            
+                            break;
+
+                        case 2: //skapa student - namn och betyg - spara i textfil
+                            bool createStudent = true;
+                            while (createStudent)
+                            {
+                                Console.WriteLine("Skriv namn på studenten:");
+                                string name = Console.ReadLine();
+                                List<double> doubleLista = new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0 , 0.0};
+                                for (int i = 0; i < doubleLista.Count; i++)
+                                {
+                                    Random minRnd = new Random();
+                                    double min = 0.0;
+                                    double max = 100.0;
+                                    doubleLista[i] = minRnd.NextDouble() * (max - min) + min;
+                                }
+                                book.AddRecord(new RecordBook(){Student = new Student() { Name = name, Grades = doubleLista } });
+                            }
+                            break;
+
+                        case 3: // sök på student - skriv ut med betyg
+
+                            break;
+
+                        case 4: //nåt annat?
+
+                            break;
+
+                        case 5:
+                            Console.WriteLine("\n\tAvslutar");
+                            Console.ReadKey();
+                            huvudmeny = false;
+                            break;
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Gör ett val 1 - 5");
+                    Int32.TryParse(Console.ReadLine(), out val);
+                }
+            }//
 
 
 
@@ -49,7 +103,7 @@ namespace RecordBookApplication.EntryPoint
 
         private static void ReadDatabase(Book book)
         {
-            var lines = File.ReadLines("C:\\Users\\Demiurgos\\source\\repos\\RecordBookApplication\\RecordBookApplication.EntryPoint\\grades.txt").ToList();
+            var lines = File.ReadLines("C:\\temp\\grades.txt").ToList();
 
             for (int i = 0; i < lines.Count - 1; i++)
             {
