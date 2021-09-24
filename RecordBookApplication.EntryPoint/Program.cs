@@ -10,6 +10,7 @@ namespace RecordBookApplication.EntryPoint
             //User Input
             List<double> grades = new List<double>() { 45.7, 69.0, 56.8, 90.8, 78.9 };
 
+
             Book book = new Book();
             book.AddRecord(new RecordBook() { Student = new Student() { Id = 1, Name = "Ralph", Grades = grades } });
 
@@ -17,6 +18,16 @@ namespace RecordBookApplication.EntryPoint
 
 
             //Todo: Create 3 metoder for Statistics GetHighest, GetLowest & CalcAverage
+
+            //Todo Implement CalcAverge feature
+            List<double> myList = new List<double>() { 23.4, 34.5, 65.6 };
+            Console.WriteLine(CalcAverage(myList)); 
+            //Hejsan Rafael
+            //Hej från Lucas
+            
+            
+            //Todo Implement GetHighest & GetLowest feature
+
 
             //Create Compute Statistics Method
 
