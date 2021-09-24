@@ -11,15 +11,22 @@ namespace RecordBookApplication.EntryPoint
 
             //Todo Implement CalcAverge feature
             List<double> myList = new List<double>() { 23.4, 34.5, 65.6 };
-            CalcAverage(myList);
+            Console.WriteLine(CalcAverage(myList)); 
             
             
             //Todo Implement GetHighest & GetLowest feature
 
         }
-        private static void CalcAverage(List<double> list)
+        private static double CalcAverage(List<double> list)
         {
-            //no implementation
+            var total = 0.0;
+
+            foreach (var item in list)
+            {
+                total = total + item;
+            }
+
+            return total / list.Count;
         }
 
     }
