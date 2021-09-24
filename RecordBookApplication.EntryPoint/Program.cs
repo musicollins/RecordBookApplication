@@ -13,6 +13,8 @@ namespace RecordBookApplication.EntryPoint
             List<double> myList = new List<double>() { 23.4, 34.5, 65.6 };
             Console.WriteLine(CalcAverage(myList)); 
             //Hejsan Rafael
+            //Hej från Lucas
+            
             
             //Todo Implement GetHighest & GetLowest feature
 
