@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace RecordBookApplication.EntryPoint
 {
-    public class Student
+    public static class SortAndSearch
     {
-        public string Name { get; set; }
-        public List<double> Grades { get; set; }
+
     }
 }
