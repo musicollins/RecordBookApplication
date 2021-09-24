@@ -6,7 +6,8 @@ namespace RecordBookApplication.EntryPoint
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("HELLO SWEDEN!");
+                
         }
     }
 }
