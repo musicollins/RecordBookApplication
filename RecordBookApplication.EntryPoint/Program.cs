@@ -83,13 +83,12 @@ namespace RecordBookApplication.EntryPoint
 
                             break;
 
-                        case 5: //nåt annat?
-
-                            Console.WriteLine("\n\tAvslutar");
+                        case 5:
                             Console.WriteLine("Avslutar");
                             Console.ReadKey();
                             huvudmeny = false;
                             break;
+
                     }
                 }
                 else
