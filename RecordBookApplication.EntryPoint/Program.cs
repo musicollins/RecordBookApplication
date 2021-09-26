@@ -52,6 +52,7 @@ namespace RecordBookApplication.EntryPoint
                     switch (val)
                     {
                         case 1: //skriv ut alla studenter med namn och statistik
+
                             
                             break;
 
@@ -71,22 +72,24 @@ namespace RecordBookApplication.EntryPoint
                                 }
                                 book.AddRecord(new RecordBook(){Student = new Student() { Name = name, Grades = doubleLista } });
                             }
-                            break;
-
-                        case 3: // sök på student - skriv ut med betyg
 
                             break;
 
-                        case 4: //nåt annat?
+                        case 3: //skapa student - namn och betyg
 
                             break;
 
-                        case 5:
+                        case 4: // sök på student - skriv ut med betyg
+
+                            break;
+
+                        case 5: //nåt annat?
+
                             Console.WriteLine("\n\tAvslutar");
+                            Console.WriteLine("Avslutar");
                             Console.ReadKey();
                             huvudmeny = false;
                             break;
-
                     }
                 }
                 else
