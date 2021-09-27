@@ -9,20 +9,20 @@ namespace RecordBookApplication.EntryPoint
     {
         static void Main(string[] args)
         {
-
+            string filePath = @"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt";
             Book book = new Book();
 
             //Create Helper class for Sorting & Searching
-            ReadDatabase(book);
+
             bool quit = false;
             do
             {
+                ReadDatabase(book, filePath);
                 Console.WriteLine("1. Show all students \n3. Exit");
                 Int32.TryParse(Console.ReadLine(), out int menu);
                 switch (menu)
                 {
                     case 1: // Show all students
-                        ReadDatabase(book);
                         int index = 1;
                         foreach (var item in book.Records)
                         {
@@ -49,7 +49,7 @@ namespace RecordBookApplication.EntryPoint
                         Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
                         string grades = Console.ReadLine();
                         string[] lines = { " ", $"Name: {name}", $"Grades: {grades}" };
-                        SaveToDataBase(lines);
+                        SaveToDataBase(lines, filePath);
 
                         break;
                     case 3: // Quit
@@ -82,9 +82,9 @@ namespace RecordBookApplication.EntryPoint
 
         }
 
-        private static void ReadDatabase(Book book)
+        private static void ReadDatabase(Book book, string filePath)
         {
-            var lines = File.ReadLines(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt").ToList();
+            var lines = File.ReadLines(filePath).ToList();
 
             for (int i = 0; i < lines.Count - 1; i++)
             {
@@ -102,9 +102,9 @@ namespace RecordBookApplication.EntryPoint
             }
         }
 
-        private static void SaveToDataBase(string[] lines)
+        private static void SaveToDataBase(string[] lines, string filePath)
         {
-            File.AppendAllLines(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt", lines);
+            File.AppendAllLines(filePath, lines);
         }
 
         private static List<double> ToDoubleList(string grades)
