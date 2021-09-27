@@ -12,17 +12,7 @@ namespace RecordBookApplication.EntryPoint
 
             Book book = new Book();
 
-
-
-            //Todo: Create 3 metoder for Statistics GetHighest, GetLowest & CalcAverage (DONE)
-
-            //Create Compute Statistics Method (DONE)
-
-            //Create method to print any List (DONE)
-
             //Create Helper class for Sorting & Searching
-
-            //Process Textfile lines and create Student objects (DONE)
             ReadDatabase(book);
             bool quit = false;
             do
@@ -57,7 +47,7 @@ namespace RecordBookApplication.EntryPoint
                         string name = Console.ReadLine();
                         Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
                         string grades = Console.ReadLine();
-                        string[] lines = { name, grades };
+                        string[] lines = { $"Name: {name}",$"Grades: {grades}" };
                        //SaveToDataBase();
 
                         break;
@@ -113,7 +103,7 @@ namespace RecordBookApplication.EntryPoint
 
         private static void SaveToDataBase(string[] lines)
         {
-            File.AppendAllLines(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt", lines);
+            File.AppendAllText(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt", lines);
         }
 
         private static List<double> ToDoubleList(string grades)
