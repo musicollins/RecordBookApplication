@@ -10,5 +10,10 @@ namespace RecordBookApplication.EntryPoint
     {
         public string Name { get; set; }
         public List<double> Grades { get; set; }
+
+        public override string ToString()
+        {
+            return "Student: " + Name + " " + Grades;
+        }
     }
 }
