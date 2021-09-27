@@ -24,6 +24,47 @@ namespace RecordBookApplication.EntryPoint
 
             //Process Textfile lines and create Student objects (DONE)
             ReadDatabase(book);
+            bool quit = false;
+            do
+            {
+                Console.WriteLine("1. Show all students \n3. Exit");
+                Int32.TryParse(Console.ReadLine(), out int menu);
+                switch (menu)
+                {
+                    case 1: // Show all students
+                        int index = 1;
+                        foreach (var item in book.Records)
+                        {
+
+                            Console.WriteLine($"[{index}] {item.Student.Name}");
+                            index++;
+                        }
+                        Console.WriteLine("Select student");
+                        Int32.TryParse(Console.ReadLine(), out int choice);
+                        if (choice > 0 && choice < book.Records.Count)
+                        {
+                            book.Records[choice - 1].ComputeStatistics();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid input");
+                        }
+
+
+                        break;
+                    case 2:
+                        Console.Write("Enter a name: ");
+                        string name = Console.ReadLine();
+                        Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
+                        string grades = Console.ReadLine();
+                        break;
+                    case 3: // Quit
+                        quit = true;
+                        break;
+                    default:
+                        break;
+                }
+            } while (!quit);
 
 
 
@@ -40,7 +81,7 @@ namespace RecordBookApplication.EntryPoint
              *  3. Quit:
              *          
              * **/
-            
+
 
 
 
