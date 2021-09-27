@@ -10,15 +10,16 @@ namespace RecordBookApplication.EntryPoint
         static void Main(string[] args)
         {
             string filePath = @"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt";
-            Book book = new Book();
+            Book book = new();
 
             //Create Helper class for Sorting & Searching
 
             bool quit = false;
             do
             {
+                book.Records.Clear();
                 ReadDatabase(book, filePath);
-                Console.WriteLine("1. Show all students \n3. Exit");
+                Console.WriteLine("1. Show all students\n2. Enter new student \n3. Exit");
                 Int32.TryParse(Console.ReadLine(), out int menu);
                 switch (menu)
                 {
@@ -32,7 +33,7 @@ namespace RecordBookApplication.EntryPoint
                         }
                         Console.WriteLine("Select student");
                         Int32.TryParse(Console.ReadLine(), out int choice);
-                        if (choice > 0 && choice < book.Records.Count)
+                        if (choice > 0 && choice <= book.Records.Count)
                         {
                             book.Records[choice - 1].ComputeStatistics();
                         }
@@ -40,16 +41,33 @@ namespace RecordBookApplication.EntryPoint
                         {
                             Console.WriteLine("Invalid input");
                         }
-
-
                         break;
-                    case 2:
+                    case 2: // Add student
                         Console.Write("Enter a name: ");
                         string name = Console.ReadLine();
                         Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
-                        string grades = Console.ReadLine();
+                        string grades = "";
+                        for (int i = 0; i < 5; i++)
+                        {
+                            Console.WriteLine("Enter a number");
+                            while (true)
+                            {
+                                if (Double.TryParse(Console.ReadLine(), out double num))
+                                {
+                                    grades += num + " ";
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input");
+                                }
+                            }
+
+
+                        }
                         string[] lines = { " ", $"Name: {name}", $"Grades: {grades}" };
                         SaveToDataBase(lines, filePath);
+
 
                         break;
                     case 3: // Quit
