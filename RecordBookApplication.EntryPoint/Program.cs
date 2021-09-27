@@ -57,6 +57,9 @@ namespace RecordBookApplication.EntryPoint
                         string name = Console.ReadLine();
                         Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
                         string grades = Console.ReadLine();
+                        string[] lines = { name, grades };
+                       //SaveToDataBase();
+
                         break;
                     case 3: // Quit
                         quit = true;
@@ -90,7 +93,7 @@ namespace RecordBookApplication.EntryPoint
 
         private static void ReadDatabase(Book book)
         {
-            var lines = File.ReadLines("C:\\Users\\Demiurgos\\source\\repos\\RecordBookApplication\\RecordBookApplication.EntryPoint\\grades.txt").ToList();
+            var lines = File.ReadLines(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt").ToList();
 
             for (int i = 0; i < lines.Count - 1; i++)
             {
@@ -106,13 +109,11 @@ namespace RecordBookApplication.EntryPoint
                     book.AddRecord(new RecordBook() { Student = new Student() { Name = name, Grades = listOfDoubles } });
                 }
             }
+        }
 
-
-
-
-            
-
-
+        private static void SaveToDataBase(string[] lines)
+        {
+            File.AppendAllLines(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt", lines);
         }
 
         private static List<double> ToDoubleList(string grades)
