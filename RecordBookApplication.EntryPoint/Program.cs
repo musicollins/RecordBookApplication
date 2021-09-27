@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace RecordBookApplication.EntryPoint
 {
@@ -45,7 +47,7 @@ namespace RecordBookApplication.EntryPoint
                     case 2: // Add student
                         Console.Write("Enter a name: ");
                         string name = Console.ReadLine();
-                        Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
+                        Console.WriteLine("Enter 5 grades like (12,4 13,4 123,4 14,5 89,5");
                         string grades = "";
                         for (int i = 0; i < 5; i++)
                         {
@@ -160,19 +162,18 @@ namespace RecordBookApplication.EntryPoint
             }
             return -1;
         }
-
-        private static void PrintRecordsList(List<double> records)
+        public static async Task ExampleAsync(string inp)
         {
-            foreach (var item in records)
-            {
-                Console.WriteLine(item);
-            }
+            using StreamWriter file = new(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\TextFile1.txt", append : true);
+            await file.WriteLineAsync(inp);
         }
 
-
-
-
-
-
+        //private static void PrintRecordsList(List<double> records)
+        //{
+        //    foreach (var item in records)
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //}
     }
 }

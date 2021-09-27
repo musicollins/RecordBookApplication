@@ -22,8 +22,8 @@ namespace RecordBookApplication.EntryPoint
         public void ComputeStatistics()
         {
             Console.WriteLine($"The Average is {CalcAverage(Student.Grades)}");
-            Console.WriteLine($"The Average is {GetHighest(Student.Grades)}");
-            Console.WriteLine($"The Average is {GetLowest(Student.Grades)}");
+            Console.WriteLine($"The Highest is {GetHighest(Student.Grades)}");
+            Console.WriteLine($"The Lowest is {GetLowest(Student.Grades)}");
 
         }
 
