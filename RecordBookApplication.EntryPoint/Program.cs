@@ -22,6 +22,7 @@ namespace RecordBookApplication.EntryPoint
                 switch (menu)
                 {
                     case 1: // Show all students
+                        ReadDatabase(book);
                         int index = 1;
                         foreach (var item in book.Records)
                         {
@@ -47,8 +48,8 @@ namespace RecordBookApplication.EntryPoint
                         string name = Console.ReadLine();
                         Console.WriteLine("Enter 5 grades like (12.3 13.4 123.4 14.5 89.5");
                         string grades = Console.ReadLine();
-                        string[] lines = { $"Name: {name}",$"Grades: {grades}" };
-                       //SaveToDataBase();
+                        string[] lines = { " ", $"Name: {name}", $"Grades: {grades}" };
+                        SaveToDataBase(lines);
 
                         break;
                     case 3: // Quit
@@ -103,7 +104,7 @@ namespace RecordBookApplication.EntryPoint
 
         private static void SaveToDataBase(string[] lines)
         {
-            File.AppendAllText(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt", lines);
+            File.AppendAllLines(@"C:\Users\Fredr\Source\Repos\Bobbysonhjos\RecordBookApplication\RecordBookApplication.EntryPoint\grades.txt", lines);
         }
 
         private static List<double> ToDoubleList(string grades)
@@ -152,8 +153,8 @@ namespace RecordBookApplication.EntryPoint
 
 
 
-       
 
-        
+
+
     }
 }
