@@ -44,10 +44,10 @@ namespace RecordBookApplication.EntryPoint
 
             while (huvudmeny)
             {
-                Console.WriteLine("Gör ett val 1 - 5");
+                Console.WriteLine("Gör ett val \n\t1: Visa alla studenter \n\t2: Skriv in en ny student \n\t3: Sök student \n\t4: Avsluta");
                 int val;
                 Int32.TryParse(Console.ReadLine(), out val);
-                if (val == 1 | val == 2 || val == 3 || val == 4 || val == 5)
+                if (val == 1 | val == 2 || val == 3 || val == 4)
                 {
                     switch (val)
                     {
@@ -55,7 +55,13 @@ namespace RecordBookApplication.EntryPoint
 
                             foreach (var item in book.Records)
                             {
-                                PrintRecordsList(item.Student.Grades);
+                                Console.WriteLine(item.Student.Name);
+                                for (int i = 0; i < item.Student.Grades.Count; i++)
+                                {
+                                    Console.WriteLine(item.Student.Grades[i]);
+                                }
+                                Console.WriteLine();
+
                             }
 
                             break;
@@ -69,24 +75,24 @@ namespace RecordBookApplication.EntryPoint
                                 List<double> doubleLista = new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0 , 0.0};
                                 for (int i = 0; i < doubleLista.Count; i++)
                                 {
-                                    Random minRnd = new Random(); 
-                                    
-                                    doubleLista[i] = minRnd.NextDouble() * (minRnd.NextDouble() * 100); //måste snickra om detta
+                                    Random minRnd = new Random();
+                                    int min = 1;
+                                    int max = 100;
+                                    doubleLista[i] = Math.Round(minRnd.NextDouble() * (max - min) - min, 2); //måste snickra om detta
                                 }
                                 book.AddRecord(new RecordBook(){Student = new Student() { Name = name, Grades = doubleLista } });
+                                createStudent = false;
                             }
 
                             break;
 
-                        case 3: //nåt annat? 
-                            
-                            break;
+                        
 
-                        case 4: // sök på student - skriv ut med betyg
+                        case 3: // sök på student - skriv ut med betyg
 
                             Console.WriteLine("vem vill du söka på?:");
                             string searchstud = Console.ReadLine();
-                            string hit = "";
+                            
                             foreach (var item in book.Records)
                             {
                                 if (item.Student.Name.Contains(searchstud))
@@ -94,19 +100,14 @@ namespace RecordBookApplication.EntryPoint
                                     Console.WriteLine(item/*.ToString()*/);
 
                                 }
-                                else
-                                {
-                                    hit = "inga träffar";
-                                }
-                                    
                                 
                             }
-                            Console.WriteLine(hit);
+                            Console.WriteLine("inga fler träffar");
                             Console.ReadKey();
 
                             break;
 
-                        case 5:
+                        case 4:
                             Console.WriteLine("Avslutar");
                             Console.ReadKey();
                             huvudmeny = false;
