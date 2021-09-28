@@ -53,7 +53,11 @@ namespace RecordBookApplication.EntryPoint
                     {
                         case 1: //skriv ut alla studenter med namn och statistik
 
-                            
+                            foreach (var item in book.Records)
+                            {
+                                PrintRecordsList(item.Student.Grades);
+                            }
+
                             break;
 
                         case 2: //skapa student - namn och betyg - spara i textfil
@@ -65,21 +69,40 @@ namespace RecordBookApplication.EntryPoint
                                 List<double> doubleLista = new List<double> { 0.0, 0.0, 0.0, 0.0, 0.0 , 0.0};
                                 for (int i = 0; i < doubleLista.Count; i++)
                                 {
-                                    Random minRnd = new Random();
-                                    double min = 0.0;
-                                    double max = 100.0;
-                                    doubleLista[i] = minRnd.NextDouble() * (max - min) + min;
+                                    Random minRnd = new Random(); 
+                                    
+                                    doubleLista[i] = minRnd.NextDouble() * (minRnd.NextDouble() * 100); //måste snickra om detta
                                 }
                                 book.AddRecord(new RecordBook(){Student = new Student() { Name = name, Grades = doubleLista } });
                             }
 
                             break;
 
-                        case 3: //skapa student - namn och betyg
-
+                        case 3: //nåt annat? 
+                            
                             break;
 
                         case 4: // sök på student - skriv ut med betyg
+
+                            Console.WriteLine("vem vill du söka på?:");
+                            string searchstud = Console.ReadLine();
+                            string hit = "";
+                            foreach (var item in book.Records)
+                            {
+                                if (item.Student.Name.Contains(searchstud))
+                                {
+                                    Console.WriteLine(item/*.ToString()*/);
+
+                                }
+                                else
+                                {
+                                    hit = "inga träffar";
+                                }
+                                    
+                                
+                            }
+                            Console.WriteLine(hit);
+                            Console.ReadKey();
 
                             break;
 
